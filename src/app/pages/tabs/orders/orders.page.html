@@ -1,0 +1,38 @@
+<ion-header >
+  <ion-toolbar color="primary">
+  <h1>Orders</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div class="orders-container">
+  @if(orderItems.length > 0) {
+    @for(order of orderItems; track order._id) {
+      <div class="order-card">
+        <div class="order-header">
+          <h3>{{ order.items[0].restaurantName }}</h3>
+          <p class="order-date">{{ order.placedAt | date:'dd MMMM yyyy, h:mm a' }}</p>
+        </div>
+
+        <div class="order-items">
+          @for(item of order.items; track item) {
+            <div class="order-item">
+              <img [src]="item.imgUrl" alt="{{item.name}}" />
+              <div class="item-info">
+                <p class="item-name">{{ item.name }}</p>
+                <p class="item-qty">{{ item.quantity }} x {{ item.Quantity }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="order-total">
+          <strong>Total:</strong> ₹{{ order.total }}
+        </div>
+      </div>
+    }
+  } @else {
+    <p class="no-order-msg">No Order History</p>
+  }
+</div>
+</ion-content>

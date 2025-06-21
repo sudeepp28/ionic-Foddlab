@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">login</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div class="container">
+
+ 
+   <div class="con">
+  
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  
+  <input type="email" formControlName="email" placeholder="Email" />
+
+  
+  <input type="password" formControlName="password"  placeholder="Password"/>
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+  <p>new user? <a routerLink="/register">register </a></p>
+</form>
+</div>
+</div>
+</ion-content>

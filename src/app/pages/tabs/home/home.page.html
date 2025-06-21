@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-item lines="none">
+      <ion-label>
+        <strong>Location</strong>
+        <p>
+          <ion-icon name="location" style="margin-right: 4px;"></ion-icon>
+        <ion-text>New Delhi</ion-text>
+<ion-button fill="clear" color="light">
+        <ion-icon slot="icon-only" name="chevron-down" ></ion-icon>
+      </ion-button>
+        </p>
+        
+      </ion-label>
+
+      <ion-button slot="end" [routerLink]="['/cart']">
+        <ion-icon slot="icon-only" name="cart" ></ion-icon>
+      </ion-button>
+      <ion-button slot="end" class="notification">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+
+      
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="10">
+        <ion-searchbar
+        debounce="800"
+        #searchInput
+        color="light"
+        inputmode="search"
+        type="search"
+        class="srchBar"
+        mode="ios"
+        placeholder="Search"
+        ></ion-searchbar>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button color="light">
+          <ion-icon slot="icon-only" name="search" color="primary"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen="true">
+
+@if(restaurants.length>0){
+  <div  class="restaurant-container">
+
+    @for(restaurant of restaurants;track restaurant._id){
+      <div  class="restaurant-card">
+      
+        <ion-card  class="restaurant-card-link" [routerLink]="['/dishes',restaurant._id]">
+
+        <ion-img [src]="restaurant.imgUrl" alt="{{ restaurant.name }}"></ion-img>
+
+        <ion-card-content>
+          <div class="restaurant-info">
+            <h2>{{ restaurant.name }}</h2>
+            <p class="address">{{ restaurant.address }}</p>
+            <p class="rating">
+              {{ restaurant.rating }} <ion-icon name="star" color="warning"></ion-icon>
+            </p>
+             
+          </div>
+        </ion-card-content>
+      </ion-card>
+     
+       <ion-button fill="clear" size="small" (click)="isSaved(restaurant._id) ? remove(restaurant._id) : save(restaurant)" class="save-button" [color]="isSaved(restaurant._id) ? 'danger' : 'medium'">
+        {{ isSaved(restaurant._id) ? '🧡' : '🤍' }}
+      </ion-button>
+    
+    </div>
+    }
+
+  </div>
+}
+@else {
+  <div class="con">
+      <div class="loader"></div>
+    </div>
+}
+
+</ion-content>

@@ -1,0 +1,32 @@
+
+<div class="Backdrop" (click)="onClose()"></div>
+
+<div class="add-to-cart">
+    <img [src]="dish.imgUrl" [alt]="dish.name" class="dish-img">
+    <h2>
+        {{dish.name}}
+    </h2>
+   
+    <p>{{dish.restaurantName}} | <span>{{dish.rating}} <i class="fa-solid fa-star"></i></span></p>
+    <p>{{dish.address}}</p>
+
+
+    <select name="selectedQuantity" [(ngModel)]="selectedPrices" >
+        @for(p of dish.prices; track p){
+            <option [ngValue]="p">{{p.quantity}}</option>
+        }
+    </select>
+     <p><strong>Price:</strong>  @if(selectedPrices){
+        
+          ₹{{selectedPrices.price}}
+        
+      }</p>
+
+    <label >Quantity</label>
+    <button (click)="decrease()">-</button>
+    <span>{{totalQuantity}}</span>
+      <button (click)="increase()">+</button>
+
+      <button (click)="addToCart()">Add to FoodCart</button>
+
+</div>

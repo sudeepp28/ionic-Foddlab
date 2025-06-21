@@ -1,0 +1,105 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <h1>Account</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+@if(token){
+  <ion-card class="Profile-card">
+    <ion-row>
+      <ion-col size="3">
+        <ion-img [src]="userProfile?.url || 'assets/default-user.jpg'"alt=""></ion-img>
+      </ion-col>
+    <ion-col size="8">
+      <ion-text>{{userProfile?.name}}</ion-text>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text>Subscription</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card class="profile" [routerLink]="['/profile']">
+    <ion-row>
+      <ion-col size="11">
+        Your profile
+      </ion-col>
+      <ion-col size="1">
+        >
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card class="collections" [routerLink]="['/tabs/wishlist']">
+    <ion-row>
+      <ion-col size="12">
+        Your Collections
+      </ion-col>
+    </ion-row>
+  </ion-card>
+   <ion-card class="orders" [routerLink]="['/tabs/orders']">
+    <ion-row>
+      <ion-col size="12">
+        Your Orders
+      </ion-col>
+    </ion-row>
+  </ion-card>
+   <ion-card class="payments">
+    <ion-row>
+      <ion-col size="12">
+        Payment Settings
+      </ion-col>
+    </ion-row>
+  </ion-card>
+   <ion-card class="about">
+    <ion-row>
+      <ion-col size="12">
+       <a href="">About</a>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+       <a href="">Send FeedBack</a>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+       <a [routerLink]="['/settings']">Setting</a>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+       <ion-button color="clear" fill="primary" (click)="onClick()">
+        Logout
+       </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+}
+@else {
+ <div class="no-Token">
+   <ion-card [routerLink]="['/login']" >
+    <ion-row>
+      <ion-col size="12">
+        Login/Register
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-col size="12">
+  About
+</ion-col>
+
+  </ion-card>
+  <ion-card slot="bottom" >
+    <ion-row>
+      <ion-col size="12">
+Setting
+</ion-col>
+    </ion-row>
+  </ion-card>
+ </div>
+}
+</ion-content>

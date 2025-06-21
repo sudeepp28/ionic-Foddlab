@@ -1,0 +1,7 @@
+{
+  "name": "S-FoodLab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

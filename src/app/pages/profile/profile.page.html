@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">Profile</h1>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+ <ion-card class="profile-Card">
+  <ion-row>
+    <ion-col size="4">
+      <ion-img [src]="userProfile?.url || 'assets/default-user.jpg'"></ion-img>
+       <ion-text (click)="openUpdateFeild('url')">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </ion-text>
+    </ion-col>
+    <ion-col size="1">
+
+    </ion-col>
+    <ion-col size="6">
+      <ion-text>
+        <h1>{{userProfile?.name | titlecase}}</h1>
+        
+      </ion-text>
+    </ion-col>
+      <ion-col size="1">
+      <ion-text (click)="openUpdateFeild('name')">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+ </ion-card>
+ <ion-card class="email-card">
+<ion-row>
+  <ion-col size="3">
+
+   <ion-text>
+     <h1>Email</h1>
+   </ion-text>
+  </ion-col>
+   <ion-col size="8">
+   <ion-text>
+    {{userProfile?.email}}
+   </ion-text>
+  </ion-col>
+    <ion-col size="1">
+      <ion-text (click)="openUpdateFeild('email')">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </ion-text>
+    </ion-col>
+</ion-row>
+ </ion-card>
+
+ <ion-card class="email-card">
+  <ion-row>
+    <ion-col size="11">
+      <ion-text>
+       <h1> Change Password</h1>
+      </ion-text>
+    </ion-col>
+     <ion-col size="1">
+      <ion-text (click)="openUpdateFeild('password')">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+ </ion-card>
+ <ion-card class="email-card">
+  <ion-row>
+    <ion-col size="3">
+      <ion-text>
+        <h1>D.O.B</h1>
+      </ion-text>
+    </ion-col>
+   
+    <ion-col size="8">
+      {{userProfile?.dob || "D.O.B"}}
+    </ion-col>
+     <ion-col size="1">
+      <ion-text (click)="openUpdateFeild('dob')">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+ </ion-card>
+ <ion-card class="email-card">
+<ion-row>
+  <ion-col size="3">
+
+   <ion-text>
+     <h1>Gender</h1>
+   </ion-text>
+  </ion-col>
+   <ion-col size="8">
+   <ion-text>
+    {{userProfile?.gender || "gender"}}
+   </ion-text>
+  </ion-col>
+    <ion-col size="1">
+      <ion-text (click)="openUpdateFeild('gender')">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </ion-text>
+    </ion-col>
+</ion-row>
+ </ion-card>
+
+@if(isUpdate){
+  <app-update-profile [feild]="editingFeild" [userProfile]="userProfile" (close)="close()"></app-update-profile>
+}
+</ion-content>

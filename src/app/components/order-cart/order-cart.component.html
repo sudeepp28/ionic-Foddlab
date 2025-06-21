@@ -1,0 +1,40 @@
+<div class="Backdrop" (click)="onClose()"></div>
+
+<div class="container" role="dialog" aria-modal="true" aria-labelledby="bill-summary-heading">
+  <h1 id="bill-summary-heading">Bill Summary</h1>
+
+  <div class="bill-details">
+    <div class="bill-row">
+      <span>Items Amount</span>
+      <span>₹{{ bill.totalprice }}</span>
+    </div>
+    <div class="bill-row">
+      <span>GST & Restaurant Charges</span>
+      <span>₹{{ bill.Gst }}</span>
+    </div>
+    <div class="bill-row">
+      <span>Surge Fee</span>
+      <span>₹{{ bill.surgeFee }}</span>
+    </div>
+    <div class="bill-row">
+      <span>Platform Fee</span>
+      <span>₹{{ bill.platformFee }}</span>
+    </div>
+    <hr>
+    <div class="bill-row">
+      <span>Grand Total</span>
+      <span>₹{{ bill.grandTotal }}</span>
+    </div>
+    <div class="bill-row">
+      <span>Rounded Amount</span>
+      <span>₹{{ bill.amountRound }}</span>
+    </div>
+    <div class="bill-row to-pay">
+      <span>To Pay</span>
+      <span>₹{{ bill.toPay }}</span>
+    </div>
+  </div>
+
+  <button (click)="onOrderPlaced()" class="place-order-btn">Place Order</button>
+</div>
+

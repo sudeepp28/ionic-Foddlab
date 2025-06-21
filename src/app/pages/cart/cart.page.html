@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">Cart</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ <div class="cart-container">
+  @if (cartItems.length > 0) {
+    @for (item of cartItems; track item._id) {
+      <div class="cart-item">
+        <img [src]="item.imgUrl" alt="{{ item.name }}" class="item-img" />
+
+        <div class="item-details">
+          <h3 class="item-name">{{ item.name }}</h3>
+          <p class="item-size">Size: {{ item.quantity }}</p>
+          <p class="item-price">₹{{ item.price * item.Quantity }}</p>
+          <p>
+            <button class="inc" (click)="updateQuantity(item, -1)">-</button>
+            {{item.Quantity}}
+            <button class="inc" (click)="updateQuantity(item, 1)">+</button>
+          </p>
+          <button class="delete-btn" (click)="deleteItem(item._id)">Remove</button>
+        </div>
+      </div>
+    }
+     <button class="clear-btn" (click)="clearCart()">Clear Cart</button>
+
+    
+
+     <button  class="openOrderCart" (click)="openOrderCart()">Total bill : {{toPay}}</button>
+
+     @if(isOrderCart){
+      <app-order-cart [cartItems]="cartItems" [bill]="bill" (close)="onclose()" (orderPlaced)="onOrderPlaced()" ></app-order-cart>
+     }
+   
+  } @else {
+    <p class="empty-cart-msg">🛒 Your FoodCart is empty</p>
+
+   
+      <ion-button [routerLink]="['/']">
+        Browse Restaurants
+      </ion-button>
+  }
+</div>
+</ion-content>

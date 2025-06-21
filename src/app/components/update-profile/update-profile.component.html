@@ -1,0 +1,50 @@
+<div class="backdrop" (click)="onclose()">
+
+</div>
+<div class="container">
+  
+
+<h1>Update</h1>
+
+
+@if(feild==="url"){
+  <input type="file">
+  <div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="updatePhoto()">Update</button>
+</div>
+}
+@if(feild==="name"){
+   <input type="text" id="name" [placeholder]="fieldValue " name="name" [(ngModel)]="name">
+  <div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="updateName()">Update</button>
+</div>
+}
+@if(feild==="email"){
+  <input type="text" id="email" [placeholder]="fieldValue " name="email" [(ngModel)]="email">
+  <div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="updateEmail()">Update</button>
+</div>
+}
+@if(feild==="dob"){
+  <input type="date" id="dob" [placeholder]="fieldValue " name="dob" [(ngModel)]="dob">
+  <div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="updateDob()">Update</button>
+</div>
+}
+@if(feild==="gender"){
+  <input type="text" [id]="" [placeholder]="userProfile.gender" name="newValue" [(ngModel)]="gender">
+  <div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="updateGender()">Update</button>
+</div>
+}
+
+
+
+
+
+</div>

@@ -1,0 +1,96 @@
+ion-header{
+  border-radius: 0 0 20px 20px;
+    ion-toolbar{
+        border-radius: 0 0 20px 20px;
+    
+   h1{
+    text-align: center;
+   }
+    }
+}
+
+ion-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  background-color: #f5f5f5;
+
+  ion-card {
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+    background: #fff;
+  }
+
+  .Profile-card {
+    padding: 12px;
+
+    ion-img {
+      width: 60px;
+      height: 60px;
+    //   border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    ion-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-top: 10px;
+    }
+  }
+
+  .profile, .collections, .orders, .payments {
+    ion-col {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      padding: 12px;
+    }
+  }
+
+  .about {
+    a {
+      display: block;
+      font-size: 15px;
+      color: #007bff;
+      text-decoration: none;
+      margin: 8px 0;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background 0.2s;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    ion-button {
+      margin-top: 10px;
+      width: 100%;
+      --color: #e74c3c;
+      font-weight: 600;
+    }
+  }
+
+  .no-Token {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    ion-card {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 16px;
+      margin-bottom: 80px;
+      background: var(--ion-color-secondary) ;
+        color: white;
+      ion-col {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

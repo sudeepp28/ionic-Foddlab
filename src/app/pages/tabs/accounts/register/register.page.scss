@@ -1,0 +1,130 @@
+ion-header {
+  border-radius: 0 0 20px 20px;
+
+  ion-toolbar {
+    border-radius: 0 0 20px 20px;
+    position: relative;
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 3rem;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      padding: 6px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+      }
+    }
+  }
+}
+.container{
+      display: block;
+  min-height: 100vh;
+//   background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 40px 20px;
+
+ 
+
+}
+.con {
+     h1{
+    font-size: 34px;
+    color: black;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  max-width: 400px;
+  min-height: 400px;
+  margin: 0 auto;
+  margin-top: 20vh;
+  padding: 24px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.con h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: #222;
+}
+
+.con form {
+  display: flex;
+  flex-direction: column;
+}
+
+.con label {
+  font-weight: 500;
+  margin: 8px 0 4px;
+  color: #333;
+}
+
+.con input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  margin: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.con input:focus {
+  border-color: #3880ff;
+  outline: none;
+}
+
+.con button[type="submit"] {
+  padding: 14px;
+  background-color: #3880ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 16px;
+}
+
+.con button[type="submit"]:disabled {
+  background-color: var(--ion-color-secondary);
+  cursor: not-allowed;
+}
+
+.con p {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #444;
+}
+
+.con a {
+  color: #3880ff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 4px;
+}

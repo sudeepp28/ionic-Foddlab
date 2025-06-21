@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">Dishes</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if (selectedRestaurant) {
+    <div class="dish-header">
+      <h2>{{ selectedRestaurant.name }}</h2>
+      <p><strong>Address:</strong> {{ selectedRestaurant.address }}</p>
+      <p><strong>Rating:</strong> {{ selectedRestaurant.rating }} <i class="fa-solid fa-star"></i></p>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        @for (dish of selectedRestaurant.dishes; track dish) {
+          <ion-col size="6" size-sm="6" size-md="4" size-lg="3">
+            <ion-card class="dish-card" (click)="selectDish(dish)">
+              <ion-img [src]="dish.imgUrl" [alt]="dish.name"></ion-img>
+              <ion-card-content>
+                <p class="dish-name">{{ dish.name }}</p>
+                <p class="dish-price">
+                  <span class="price-badge">{{ dish.prices[0].quantity }}</span>
+                  ₹{{ dish.prices[0].price }}
+                </p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+
+    @if(ShowButton){
+    <div class="cart-actions" >
+  <button class="go-to-cart" [routerLink]="['/cart']">
+   <i class="fa-solid fa-cart-shopping"></i> Go to Cart
+  </button>
+  <button class="remove-cart" (click)="clearCart()">
+    <i class="fa-solid fa-trash"></i> Remove Cart
+  </button>
+</div>
+
+    }
+  }
+
+  @if(openAddToCart){
+    <app-add-to-cart (close)="closeAddToCart()" [dish]="selectedDish"  ></app-add-to-cart>
+  }
+</ion-content>
+
