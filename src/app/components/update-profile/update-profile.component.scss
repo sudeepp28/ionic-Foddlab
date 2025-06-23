@@ -130,3 +130,26 @@ input[type="file"] {
     transform: rotate(360deg);
   }
 }
+select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    border: 1px solid #ff5722;
+    outline: none;
+    background: #fff;
+  }
+
+  option {
+    background-color: #fff;
+    color: #333;
+  }
+}

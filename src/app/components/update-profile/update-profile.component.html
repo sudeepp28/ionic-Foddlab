@@ -47,13 +47,20 @@
 <button (click)="updateDob()">Update</button>
 </div>
 }
-@if(feild==="gender"){
+@if(feild === "gender") {
   <h1>Update</h1>
-  <input type="text" [id]="" [placeholder]="userProfile.gender" name="newValue" [(ngModel)]="gender">
+
+  <select [(ngModel)]="gender">
+    <option value="" disabled selected>Select gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+  </select>
+
   <div class="btn">
-  <button (click)="onclose()">close</button>
-<button (click)="updateGender()">Update</button>
-</div>
+    <button (click)="onclose()">Close</button>
+    <button (click)="updateGender()">Update</button>
+  </div>
 }
 @if(feild==="password"){
    

@@ -34,7 +34,7 @@ passwordChanged=false
 
     this.getFeildValue(this.userProfile)
    this.getProfileData()
-   
+   this.gender = this.userProfile.gender || 'gender';
   }
   
 onclose(){
