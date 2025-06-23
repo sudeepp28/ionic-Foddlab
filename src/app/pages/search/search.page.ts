@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonImg, IonCardContent, IonIcon } from '@ionic/angular/standalone';
 import { SearchService } from 'src/app/api.services/search.service';
 import { restaurants } from 'src/app/model';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 })
 export class SearchPage implements OnInit {
 
-  constructor(private searchService:SearchService) { }
+  constructor(private searchService:SearchService, private router:Router) { }
 
  SearchedRestaurants:restaurants[]=[]
 query:string=""
@@ -36,6 +36,9 @@ loadSearchedRestaurants() {
       
     });
   }
+}
+goBack(){
+this.router.navigate(['/'])
 }
 
 }
