@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+   <h1>search</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  @if (SearchedRestaurants.length > 0) {
+    <div class="restaurant-container">
+      @for (restaurant of SearchedRestaurants; track restaurant._id) {
+        <div class="restaurant-card">
+          <ion-card class="restaurant-card-link" [routerLink]="['/dishes', restaurant._id]">
+            <ion-img [src]="restaurant.imgUrl" alt="{{ restaurant.name }}"></ion-img>
+
+            <ion-card-content>
+              <div class="restaurant-info">
+                <h2>{{ restaurant.name }}</h2>
+                <p class="address">{{ restaurant.address }}</p>
+                <p class="rating">
+                  {{ restaurant.rating }}
+                  <ion-icon name="star" color="warning"></ion-icon>
+                </p>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="no-results">
+      <p>No items found for "{{ query }}"</p>
+    </div>
+  }
+
+</ion-content>

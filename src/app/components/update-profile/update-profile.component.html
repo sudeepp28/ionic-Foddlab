@@ -62,42 +62,74 @@
     <button (click)="updateGender()">Update</button>
   </div>
 }
-@if(feild==="password"){
-   
+@if(feild==="password") {
   <h1>Change Password</h1>
-@if(!passwordChanged){
-  
-  <div>
-    <p>
-      <input type="password" name="oldPassword" id="oldPassword" [(ngModel)]="oldPassword" placeholder="old Password">
-    </p>
-    <p>
-      <input type="password" name="newPassword" id="newPassword" [(ngModel)]="newPassword" placeholder="new Password">
-    </p>
-    <p>
-      <input type="password" name="confirmPassword" id="confirmPassword" [(ngModel)]="confirmPassword" placeholder="confirm-new Password">
-    </p>
-<div class="btn">
-  <button (click)="onclose()">close</button>
-<button (click)="changePassword()">change</button>
-</div>
-    
-  </div>
-}
-@else {
- <div class="success-popup">
-   <p style="color: lime;">
-    password Changed Successfully. Do you want to Logout?
-  </p>
 
-  <div class="btn">
-  <button (click)="onclose()">close</button>
-<button (click)="logoutAllDevices()" style="background-color: red;">Logout</button>
-</div>
- </div>
+  @if(!passwordChanged) {
+    <div>
+      <p class="input-wrapper">
+        <input
+          [type]="showOldP ? 'text' : 'password'"
+          name="oldPassword"
+          id="oldPassword"
+          [(ngModel)]="oldPassword"
+          placeholder="Old Password"
+        />
+        <ion-icon
+          [name]="showOldP ? 'eye-off' : 'eye'"
+          class="eye-icon"
+          (click)="showOp()"
+        ></ion-icon>
+      </p>
+
+      <p class="input-wrapper">
+        <input
+          [type]="showNewP ? 'text' : 'password'"
+          name="newPassword"
+          id="newPassword"
+          [(ngModel)]="newPassword"
+          placeholder="New Password"
+        />
+        <ion-icon
+          [name]="showNewP ? 'eye-off' : 'eye'"
+          class="eye-icon"
+          (click)="showNp()"
+        ></ion-icon>
+      </p>
+
+      <p class="input-wrapper">
+        <input
+          [type]="showConfirmP ? 'text' : 'password'"
+          name="confirmPassword"
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          placeholder="Confirm New Password"
+        />
+        <ion-icon
+          [name]="showConfirmP ? 'eye-off' : 'eye'"
+          class="eye-icon"
+          (click)="showCp()"
+        ></ion-icon>
+      </p>
+
+      <div class="btn">
+        <button (click)="onclose()">Close</button>
+        <button (click)="changePassword()">Change</button>
+      </div>
+    </div>
+  } @else {
+    <div class="success-popup">
+      <p style="color: lime;">
+        Password changed successfully. Do you want to logout?
+      </p>
+      <div class="btn">
+        <button (click)="onclose()">Close</button>
+        <button (click)="logoutAllDevices()" style="background-color: red;">Logout</button>
+      </div>
+    </div>
+  }
 }
 
-}
 
 
 

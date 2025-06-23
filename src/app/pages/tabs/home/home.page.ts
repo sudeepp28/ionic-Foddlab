@@ -11,6 +11,7 @@ import { RestaurantlistService } from 'src/app/api.services/restaurantlist.servi
 import { SavedRestaurantsService } from 'src/app/api.services/saved-restuarants.service';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
+import { SearchService } from 'src/app/api.services/search.service';
 
 @Component({
   selector: 'app-home',
@@ -26,20 +27,20 @@ import { filter, Subscription } from 'rxjs';
 export class HomePage implements OnInit, OnDestroy {
   restaurants: any[] = [];
   saved: any[] = [];
+  searchedInputs=''
   private routerSub!: Subscription;
 
   constructor(
     private restaurantService: RestaurantlistService,
     private savedService: SavedRestaurantsService,
-    private router: Router
+    private router: Router,
+    private searchService:SearchService
   ) {
     addIcons({ location, chevronDown, cart, notifications, search, star });
   }
 
   ngOnInit(): void {
-    this.loadData(); // Initial load
-
-    // Reload on every route navigation to /tabs/home
+    this.loadData(); 
     this.routerSub = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -85,5 +86,12 @@ export class HomePage implements OnInit, OnDestroy {
     if (this.routerSub) {
       this.routerSub.unsubscribe();
     }
+  }
+  onSearch(){
+     this.searchService.setdata(this.searchedInputs)
+ if(this.searchedInputs){
+   this.router.navigate(['/search'])
+   console.log(this.searchedInputs)
+ }
   }
 }

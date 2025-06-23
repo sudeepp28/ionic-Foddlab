@@ -41,7 +41,7 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
- changePassword(body:any):Observable<any>{
+  changePassword(body:any):Observable<any>{
    return this.http.post(`${this.baseUrl}/change-password`,body)
   }
 }

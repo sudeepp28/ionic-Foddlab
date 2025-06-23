@@ -81,7 +81,7 @@ input[type="file"] {
   }
 
   button:last-child {
-    background: #ff5722;
+    background: #864912;
     color: #fff;
 
     &:hover {
@@ -151,5 +151,39 @@ select {
   option {
     background-color: #fff;
     color: #333;
+  }
+}
+.input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+
+  input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: border 0.3s ease;
+
+    &:focus {
+      border-color: #ff5722;
+      outline: none;
+      background-color: #fff;
+    }
+  }
+
+  ion-icon.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: #888;
+    cursor: pointer;
+
+    &:hover {
+      color: #ff5722;
+    }
   }
 }

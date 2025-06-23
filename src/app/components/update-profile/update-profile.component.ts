@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from 'src/app/api.services/profile.service';
-import { IonButton, IonItem, IonLabel } from "@ionic/angular/standalone";
+import { IonButton, IonItem, IonLabel, IonIcon } from "@ionic/angular/standalone";
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api.services/author.Service';
 
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/api.services/author.Service';
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
   styleUrls: ['./update-profile.component.scss'],
-  imports:[FormsModule]
+  imports:[FormsModule, IonIcon]
 })
 export class UpdateProfileComponent  implements OnInit {
 @Input() feild!:any;
@@ -48,6 +48,10 @@ updatePhoto(){
 
 }
 updateName(){
+  if(this.name=""){
+    alert ("name required")
+    return
+  }
   const nameData={userId:this.userProfile.userId,name:this.name}
   this.profileService.updateName(nameData).subscribe(res=>{
     this.close.emit()
@@ -160,4 +164,20 @@ updateProfileImage(){
     this.close.emit()
   })
 }
+
+showOldP=false
+showNewP=false
+showConfirmP=false
+
+showOp(){
+  this.showOldP=!this.showOldP
+}
+showNp(){
+  this.showNewP=!this.showNewP
+}
+
+showCp(){
+  this.showConfirmP=!this.showConfirmP
+}
+
 }

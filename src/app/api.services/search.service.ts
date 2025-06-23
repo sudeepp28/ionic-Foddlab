@@ -8,7 +8,8 @@ import { restaurants } from "../model";
 export class SearchService{
 
     constructor(private http:HttpClient){}
-     apiUrl="https://foodlabbackend.onrender.com"
+     apiUrl="https://foodlabbackend.onrender.com/searches"
+
 
   private searchedTerm=new BehaviorSubject<any>('');
   currentTerm=this.searchedTerm.asObservable()
@@ -23,6 +24,6 @@ setdata(term:any){
 
 
    search(query:string): Observable<{  result: restaurants[] }> {
-    return this.http.get<{  result: restaurants[] }>(`${this.apiUrl}?q=${query}`);
+    return this.http.get<{  result: restaurants[] }>(`${this.apiUrl}/?q=${query}`);
   }
 }
