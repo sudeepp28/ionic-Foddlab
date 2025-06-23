@@ -4,17 +4,27 @@
 <div class="container">
   
 
-<h1>Update</h1>
+
 
 
 @if(feild==="url"){
-  <input type="file">
+  <h1>Update</h1>
+  <input type="file" (change)="onFileSelected($event)">
   <div class="btn">
   <button (click)="onclose()">close</button>
-<button (click)="updatePhoto()">Update</button>
+<button (click)="updateProfileImage()">Update</button>
+@if(loader){
+  <div class="spinner-overlay">
+    <div class="spinner-content">
+      <p>Uploading...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+}
 </div>
 }
 @if(feild==="name"){
+  <h1>Update</h1>
    <input type="text" id="name" [placeholder]="fieldValue " name="name" [(ngModel)]="name">
   <div class="btn">
   <button (click)="onclose()">close</button>
@@ -22,6 +32,7 @@
 </div>
 }
 @if(feild==="email"){
+  <h1>Update</h1>
   <input type="text" id="email" [placeholder]="fieldValue " name="email" [(ngModel)]="email">
   <div class="btn">
   <button (click)="onclose()">close</button>
@@ -29,6 +40,7 @@
 </div>
 }
 @if(feild==="dob"){
+  <h1>Update</h1>
   <input type="date" id="dob" [placeholder]="fieldValue " name="dob" [(ngModel)]="dob">
   <div class="btn">
   <button (click)="onclose()">close</button>
@@ -36,11 +48,48 @@
 </div>
 }
 @if(feild==="gender"){
+  <h1>Update</h1>
   <input type="text" [id]="" [placeholder]="userProfile.gender" name="newValue" [(ngModel)]="gender">
   <div class="btn">
   <button (click)="onclose()">close</button>
 <button (click)="updateGender()">Update</button>
 </div>
+}
+@if(feild==="password"){
+   
+  <h1>Change Password</h1>
+@if(!passwordChanged){
+  
+  <div>
+    <p>
+      <input type="password" name="oldPassword" id="oldPassword" [(ngModel)]="oldPassword" placeholder="old Password">
+    </p>
+    <p>
+      <input type="password" name="newPassword" id="newPassword" [(ngModel)]="newPassword" placeholder="new Password">
+    </p>
+    <p>
+      <input type="password" name="confirmPassword" id="confirmPassword" [(ngModel)]="confirmPassword" placeholder="confirm-new Password">
+    </p>
+<div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="changePassword()">change</button>
+</div>
+    
+  </div>
+}
+@else {
+ <div class="success-popup">
+   <p style="color: lime;">
+    password Changed Successfully. Do you want to Logout?
+  </p>
+
+  <div class="btn">
+  <button (click)="onclose()">close</button>
+<button (click)="logoutAllDevices()" style="background-color: red;">Logout</button>
+</div>
+ </div>
+}
+
 }
 
 

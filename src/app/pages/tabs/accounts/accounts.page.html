@@ -102,4 +102,9 @@ Setting
   </ion-card>
  </div>
 }
+
+
+@if(islogout){
+  <app-logout (close)="onClose()"></app-logout>
+}
 </ion-content>

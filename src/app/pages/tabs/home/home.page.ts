@@ -1,34 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader,  IonToolbar, IonItem, IonLabel, IonIcon, IonText, IonButton, IonRow, IonCol, IonSearchbar, IonCardContent, IonCard, IonImg } from '@ionic/angular/standalone';
+import {
+  IonContent, IonHeader, IonToolbar, IonItem, IonLabel, IonIcon, IonText,
+  IonButton, IonRow, IonCol, IonSearchbar, IonCardContent, IonCard, IonImg
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { chevronDown, location ,cart, notifications, options, search, star } from 'ionicons/icons';
+import { chevronDown, location, cart, notifications, options, search, star } from 'ionicons/icons';
 import { RestaurantlistService } from 'src/app/api.services/restaurantlist.service';
-import { restaurants } from 'src/app/model';
 import { SavedRestaurantsService } from 'src/app/api.services/saved-restuarants.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 
-// import { ListHeadingComponent } from 'src/app/components/list-heading/list-heading.component';
- 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonImg, IonCard, IonCardContent, IonSearchbar, IonCol, IonRow, IonButton, IonText, IonIcon,  IonLabel, IonItem, IonContent, IonHeader, IonToolbar, CommonModule, FormsModule,RouterModule]
+  imports: [
+    IonImg, IonCard, IonCardContent, IonSearchbar, IonCol, IonRow, IonButton,
+    IonText, IonIcon, IonLabel, IonItem, IonContent, IonHeader, IonToolbar,
+    CommonModule, FormsModule, RouterModule
+  ]
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
   restaurants: any[] = [];
   saved: any[] = [];
+  private routerSub!: Subscription;
 
   constructor(
     private restaurantService: RestaurantlistService,
-    private savedService: SavedRestaurantsService
+    private savedService: SavedRestaurantsService,
+    private router: Router
   ) {
-      addIcons({location,chevronDown,cart,notifications,search,star});}
+    addIcons({ location, chevronDown, cart, notifications, search, star });
+  }
 
   ngOnInit(): void {
+    this.loadData(); // Initial load
+
+    // Reload on every route navigation to /tabs/home
+    this.routerSub = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        if (event.urlAfterRedirects === '/tabs/home') {
+          this.loadData();
+        }
+      });
+  }
+
+  loadData(): void {
     this.restaurantService.getRestaurants().subscribe((data) => {
       this.restaurants = data;
     });
@@ -49,7 +70,7 @@ export class HomePage implements OnInit {
     const newSave = { restaurantId: _id, ...restaurantData };
     this.savedService.saveRestaurant(newSave).subscribe({
       next: () => this.savedService.fetchSavedRestaurants(),
-      error: (err) => alert(err.error.message || 'Error saving restaurant'),
+      error: (err) => alert(err.error.message || 'Login first '),
     });
   }
 
@@ -60,4 +81,9 @@ export class HomePage implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
+  }
 }

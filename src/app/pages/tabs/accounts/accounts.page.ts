@@ -8,6 +8,7 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { ProfileService } from 'src/app/api.services/profile.service';
 import { AuthService } from 'src/app/api.services/author.Service';
+import { LogoutComponent } from "../../../components/logout/logout.component";
 
 @Component({
   selector: 'app-accounts',
@@ -17,8 +18,9 @@ import { AuthService } from 'src/app/api.services/author.Service';
   imports: [
     IonButton, IonText, IonImg, IonCol, IonRow,
     IonCard, IonContent, IonHeader, IonToolbar,
-    CommonModule, FormsModule, RouterModule
-  ]
+    CommonModule, FormsModule, RouterModule,
+    LogoutComponent
+]
 })
 export class AccountsPage {
   token: any;
@@ -48,9 +50,13 @@ export class AccountsPage {
       console.log(this.userProfile);
     });
   }
-
+islogout=false
   onClick() {
-    this.authService.logout();
-    this.router.navigate(['/']);
+   
+   this.islogout=true
+
+  }
+  onClose(){
+    this.islogout=false
   }
 }

@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from 'src/app/api.services/profile.service';
+import { IonButton, IonItem, IonLabel } from "@ionic/angular/standalone";
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/api.services/author.Service';
 
 @Component({
   selector: 'app-update-profile',
@@ -13,6 +16,7 @@ export class UpdateProfileComponent  implements OnInit {
 @Input() userProfile:any
 @Output() close=new EventEmitter()
 
+selectedFile: File | null = null;
 email:any
 name:any
 dob:any
@@ -20,7 +24,11 @@ gender:any
 token:any
 user:any
 newValue:any
-  constructor(private profileService:ProfileService) { }
+oldPassword=""
+newPassword=""
+confirmPassword=""
+passwordChanged=false
+  constructor(private profileService:ProfileService, private router:Router, private authService:AuthService) { }
 
   ngOnInit() {
 
@@ -93,4 +101,63 @@ getProfileData(){
       })
 }
 
+changePassword() {
+  if (!this.oldPassword || !this.newPassword || !this.confirmPassword) {
+    return alert('Please fill all fields');
+  }
+
+  if (this.newPassword !== this.confirmPassword) {
+    return alert('New and Confirm Password do not match');
+  }
+
+  const data = {
+    userId: this.userProfile.userId,
+    oldPassword: this.oldPassword,
+    newPassword: this.newPassword
+  };
+
+  this.authService.changePassword(data).subscribe({
+    next: () => {
+      this.passwordChanged = true;
+      this.clearForm();
+    },
+    error: (err) => {
+      alert(err.error.message || 'Error changing password');
+    }
+  });
+}
+clearForm() {
+  this.oldPassword = '';
+  this.newPassword = '';
+  this.confirmPassword = '';
+}
+
+logoutAllDevices() {
+  // Ideally, call backend to invalidate all tokens if implemented
+  localStorage.removeItem('token'); // Clear token
+  this.router.navigate(['/login']);
+  this.close.emit()
+}
+onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+ loader=false 
+updateProfileImage(){
+  this.loader=true
+  const userId= this.userProfile.userId;
+
+   if (!this.selectedFile) {
+    console.log("image not selected")
+      return;
+    }
+  const formData=new FormData();
+  formData.append('userId',userId);
+  formData.append('image', this.selectedFile)
+  this.profileService.updateProfile(formData).subscribe(()=>{
+    this.loader=false
+    console.log("image uploaded")
+    this.close.emit()
+  })
+}
 }

@@ -9,7 +9,7 @@ export class ProfileService{
 
     url="https://foodlabbackend.onrender.com"
 
-    apiUrl=""
+    // apiUrl="http://localhost:5000"
     getprofileData():Observable<any>{
 return this.http.get<any[]>(`${this.url}/profile`)
     }
