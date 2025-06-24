@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 export class ProfileService{
     constructor(private http:HttpClient){}
 
-    url="https://foodlabbackend.onrender.com"
+    url="https://foodlabbackend-production.up.railway.app"
 
     // apiUrl="http://localhost:5000"
     getprofileData():Observable<any>{

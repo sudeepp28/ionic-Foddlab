@@ -8,7 +8,7 @@ import { restaurants } from "../model";
 export class SearchService{
 
     constructor(private http:HttpClient){}
-     apiUrl="https://foodlabbackend.onrender.com/searches"
+     apiUrl="https://foodlabbackend-production.up.railway.app/searches"
 
 
   private searchedTerm=new BehaviorSubject<any>('');

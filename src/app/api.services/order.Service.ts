@@ -11,7 +11,7 @@ export class OrderService{
     const token = localStorage.getItem('token');
     return new HttpHeaders({ Authorization: token || '' });
   }
-url="https://foodlabbackend.onrender.com/order"
+url="https://foodlabbackend-production.up.railway.app/order"
     getOrders():Observable<any>{
         return this.http.get<any>(this.url,{
       headers: this.getAuthHeaders(),

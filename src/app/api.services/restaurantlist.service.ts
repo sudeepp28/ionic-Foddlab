@@ -12,7 +12,7 @@ export class RestaurantlistService{
 constructor(private http:HttpClient){
 
 }
-url="https://foodlabbackend.onrender.com"
+url="https://foodlabbackend-production.up.railway.app"
 getRestaurants():Observable<restaurants[]>{
   
     return this.http.get<restaurants[]>(this.url)

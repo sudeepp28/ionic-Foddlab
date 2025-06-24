@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SavedRestaurantsService {
-  private apiUrl = 'https://foodlabbackend.onrender.com/saved'; // Adjust if deployed
+  private apiUrl = 'https://foodlabbackend-production.up.railway.app/saved'; // Adjust if deployed
 
   private savedRestaurants$ = new BehaviorSubject<any[]>([]);
 

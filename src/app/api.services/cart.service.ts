@@ -12,7 +12,7 @@ export class CartService{
     return new HttpHeaders({ Authorization: token || '' });
   }
 
-    url="https://foodlabbackend.onrender.com/cart"
+    url="https://foodlabbackend-production.up.railway.app/cart"
       private showCartButtonSubject = new BehaviorSubject<boolean>(false);
   showCartButton$ = this.showCartButtonSubject.asObservable();
 

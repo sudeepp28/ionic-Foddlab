@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'https://foodlabbackend.onrender.com'; 
+  private baseUrl = 'https://foodlabbackend-production.up.railway.app'; 
 
   constructor(private http: HttpClient) {}
 
