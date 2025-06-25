@@ -27,29 +27,37 @@ import { SearchService } from 'src/app/api.services/search.service';
 export class HomePage implements OnInit, OnDestroy {
   restaurants: any[] = [];
   saved: any[] = [];
-  searchedInputs=''
-   locality: string = '';
+  searchedInputs = '';
+  locality: string = 'your area';
   private routerSub!: Subscription;
 
   constructor(
     private restaurantService: RestaurantlistService,
     private savedService: SavedRestaurantsService,
     private router: Router,
-    private searchService:SearchService
+    private searchService: SearchService
   ) {
     addIcons({ location, chevronDown, cart, notifications, search, star });
   }
 
   ngOnInit(): void {
-    this.loadData(); 
+    this.loadData();
+
+    // 🔁 Detect navigation back to home tab and update locality
     this.routerSub = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         if (event.urlAfterRedirects === '/tabs/home') {
+          this.updateLocality();  // ✅ refresh location
           this.loadData();
         }
       });
-      const savedLocality = localStorage.getItem('userLocality');
+
+    this.updateLocality(); // ✅ on first load as well
+  }
+
+  updateLocality(): void {
+    const savedLocality = localStorage.getItem('userLocality');
     this.locality = savedLocality ? savedLocality : 'your area';
   }
 
@@ -74,7 +82,7 @@ export class HomePage implements OnInit, OnDestroy {
     const newSave = { restaurantId: _id, ...restaurantData };
     this.savedService.saveRestaurant(newSave).subscribe({
       next: () => this.savedService.fetchSavedRestaurants(),
-      error: (err) => alert(err.error.message || 'Login first '),
+      error: (err) => alert(err.error.message || 'Login first'),
     });
   }
 
@@ -90,13 +98,12 @@ export class HomePage implements OnInit, OnDestroy {
       this.routerSub.unsubscribe();
     }
   }
-  onSearch(){
-     this.searchService.setdata(this.searchedInputs)
- if(this.searchedInputs){
-   this.router.navigate(['/search'])
-   console.log(this.searchedInputs)
- }
+
+  onSearch(): void {
+    this.searchService.setdata(this.searchedInputs);
+    if (this.searchedInputs) {
+      this.router.navigate(['/search']);
+      console.log(this.searchedInputs);
+    }
   }
-  
-  
 }
