@@ -59,7 +59,7 @@ editingFeild:any
   }
  goBack(){
   console.log("routing")
-  this.router.navigate(['/tabs/accounts'])
+  this.router.navigate(['/settings'])
  }
 
 }

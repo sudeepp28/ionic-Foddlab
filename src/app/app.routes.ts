@@ -71,6 +71,10 @@ export const routes: Routes = [
     path: 'splash',
     loadComponent: () => import('./pages/splash/splash.page').then( m => m.SplashPage)
   },
+  {
+    path: 'payment-settings',
+    loadComponent: () => import('./pages/payment-settings/payment-settings.page').then( m => m.PaymentSettingsPage)
+  },
  
  
   

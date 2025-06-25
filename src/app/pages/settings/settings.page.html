@@ -1,9 +1,36 @@
-<ion-header >
-  <ion-toolbar color="primary">
-    <h1>Settings</h1>
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">Settings</h1>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
- 
+<ion-card  [routerLink]="['/profile']">
+   <ion-row>
+  <ion-col size="12">
+    <h2>Manage Profile</h2>
+  </ion-col>
+ </ion-row>
+</ion-card>
+<ion-card [routerLink]="['/payment-settings']">
+   <ion-row>
+  <ion-col size="12">
+    <h2>Payment settings</h2>
+  </ion-col>
+ </ion-row>
+</ion-card>
+<ion-card (click)="openDaccount()">
+   <ion-row>
+  <ion-col size="12">
+    <h2>Delete Account</h2>
+  </ion-col>
+ </ion-row>
+</ion-card>
+
+@if(isDAccount){
+  <app-delete-account (close)="closeDaccount()"></app-delete-account>
+}
 </ion-content>
