@@ -5,9 +5,9 @@
         <strong>Location</strong>
         <p>
           <ion-icon name="location" style="margin-right: 4px;"></ion-icon>
-        <ion-text>New Delhi</ion-text>
-<ion-button fill="clear" color="light">
-        <ion-icon slot="icon-only" name="chevron-down" ></ion-icon>
+        <ion-text>{{locality}}</ion-text>
+<ion-button fill="clear" color="light" [routerLink]="['/tabs/explore']" >
+        <ion-icon slot="icon-only" name="chevron-down"  ></ion-icon>
       </ion-button>
         </p>
         

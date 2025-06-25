@@ -28,6 +28,7 @@ export class HomePage implements OnInit, OnDestroy {
   restaurants: any[] = [];
   saved: any[] = [];
   searchedInputs=''
+   locality: string = '';
   private routerSub!: Subscription;
 
   constructor(
@@ -48,6 +49,8 @@ export class HomePage implements OnInit, OnDestroy {
           this.loadData();
         }
       });
+      const savedLocality = localStorage.getItem('userLocality');
+    this.locality = savedLocality ? savedLocality : 'your area';
   }
 
   loadData(): void {
@@ -94,4 +97,6 @@ export class HomePage implements OnInit, OnDestroy {
    console.log(this.searchedInputs)
  }
   }
+  
+  
 }

@@ -3,18 +3,22 @@
 <div class="con">
   <p class="error" *ngIf="message">{{ message }}</p>
 
-  <!-- Step 1: Enter Email -->
-  <div *ngIf="step === 1">
+
+ @if(step===1){
+   <div>
     <input type="email" placeholder="Enter email" [(ngModel)]="email" />
     <button (click)="checkUser()" [disabled]="!email || loading">Check User</button>
   </div>
+ }
 
-  <!-- Step 2: Enter Password -->
+ @if(step===2){
+   
   <div *ngIf="step === 2">
     <input type="password" placeholder="Enter password" [(ngModel)]="password" />
     <button (click)="deleteAccount()" [disabled]="!password || loading">Delete Account</button>
   </div>
+ }
 
-  <!-- Cancel/Close Button -->
+ 
   <button (click)="onClose()">Cancel</button>
 </div>
