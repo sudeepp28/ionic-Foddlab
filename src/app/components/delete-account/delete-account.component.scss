@@ -38,14 +38,16 @@ input {
 input:focus {
   border-color: #3b82f6; // blue on focus
 }
-
+.btn{
+  background-color: 764010;
+}
 button {
   padding: 12px;
   font-size: 16px;
-  background-color: #ef4444; // red
+  background-color: #764010; // red
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }

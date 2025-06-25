@@ -48,12 +48,12 @@ export class HomePage implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         if (event.urlAfterRedirects === '/tabs/home') {
-          this.updateLocality();  // ✅ refresh location
+          this.updateLocality();  
           this.loadData();
         }
       });
 
-    this.updateLocality(); // ✅ on first load as well
+    this.updateLocality(); 
   }
 
   updateLocality(): void {

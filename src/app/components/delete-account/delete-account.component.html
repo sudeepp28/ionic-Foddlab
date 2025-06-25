@@ -7,7 +7,7 @@
  @if(step===1){
    <div>
     <input type="email" placeholder="Enter email" [(ngModel)]="email" />
-    <button (click)="checkUser()" [disabled]="!email || loading">Check User</button>
+    <ion-button class="btn" (click)="checkUser()" [disabled]="!email || loading">Check User</ion-button>
   </div>
  }
 
@@ -15,7 +15,7 @@
    
   <div *ngIf="step === 2">
     <input type="password" placeholder="Enter password" [(ngModel)]="password" />
-    <button (click)="deleteAccount()" [disabled]="!password || loading">Delete Account</button>
+    <ion-button (click)="deleteAccount()" [disabled]="!password || loading">Delete Account</ion-button>
   </div>
  }
 

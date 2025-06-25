@@ -1,12 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>explore</ion-title>
+<ion-header >
+  <ion-toolbar color="primary">
+  <h1>Explore</h1>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
    <div class="location-info">
-   <ion-button (click)="getUserLocation()">explore</ion-button>
-    <h2>Exploring restaurants near <strong>{{ locality }}</strong></h2>
+   
+    <h2>Tap here for See your locaton </h2>
+    <ion-button (click)="getUserLocation()">explore</ion-button>
   </div>
+  <h1> Current Location : <strong>{{ locality }}</strong></h1>
 </ion-content>

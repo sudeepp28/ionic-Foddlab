@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/api.services/author.Service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { IonButton } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-delete-account',
   templateUrl: './delete-account.component.html',
   styleUrls: ['./delete-account.component.scss'],
-  imports:[FormsModule,CommonModule]
+  imports:[FormsModule,CommonModule, IonButton]
 })
 export class DeleteAccountComponent {
   @Output() close = new EventEmitter();

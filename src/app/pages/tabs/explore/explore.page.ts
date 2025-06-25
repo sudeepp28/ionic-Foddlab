@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './explore.page.html',
   styleUrls: ['./explore.page.scss'],
   standalone: true,
-  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonButton, IonContent, IonHeader, IonToolbar, CommonModule, FormsModule]
 })
 export class ExplorePage implements OnInit {
  locality: string = '...';
