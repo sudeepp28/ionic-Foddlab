@@ -83,6 +83,14 @@ export const routes: Routes = [
     path: 'feedback',
     loadComponent: () => import('./pages/feedback/feedback.page').then( m => m.FeedbackPage)
   },
+  {
+    path: 'notification',
+    loadComponent: () => import('./pages/notification/notification.page').then( m => m.NotificationPage)
+  },
+  {
+    path: 'help',
+    loadComponent: () => import('./pages/help/help.page').then( m => m.HelpPage)
+  },
  
  
   

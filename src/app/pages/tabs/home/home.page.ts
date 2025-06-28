@@ -13,6 +13,7 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { SearchService } from 'src/app/api.services/search.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -21,8 +22,9 @@ import { SearchService } from 'src/app/api.services/search.service';
   imports: [
     IonImg, IonCard, IonCardContent, IonSearchbar, IonCol, IonRow, IonButton,
     IonText, IonIcon, IonLabel, IonItem, IonContent, IonHeader, IonToolbar,
-    CommonModule, FormsModule, RouterModule
-  ]
+    CommonModule, FormsModule, RouterModule,
+   
+]
 })
 export class HomePage implements OnInit, OnDestroy {
   restaurants: any[] = [];
@@ -35,7 +37,7 @@ export class HomePage implements OnInit, OnDestroy {
     private restaurantService: RestaurantlistService,
     private savedService: SavedRestaurantsService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
   ) {
     addIcons({ location, chevronDown, cart, notifications, search, star });
   }
@@ -109,4 +111,8 @@ export class HomePage implements OnInit, OnDestroy {
       console.log(this.searchedInputs);
     }
   }
+
+  isDropDown=false
+
+ 
 }
