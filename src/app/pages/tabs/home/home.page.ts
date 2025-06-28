@@ -82,7 +82,10 @@ export class HomePage implements OnInit, OnDestroy {
     const newSave = { restaurantId: _id, ...restaurantData };
     this.savedService.saveRestaurant(newSave).subscribe({
       next: () => this.savedService.fetchSavedRestaurants(),
-      error: (err) => alert(err.error.message || 'Login first'),
+      error: (err) => {
+        alert(err.error.message || 'Login first'),
+      this.router.navigate(['/login'])
+      }
     });
   }
 

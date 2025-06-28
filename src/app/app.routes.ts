@@ -75,6 +75,14 @@ export const routes: Routes = [
     path: 'payment-settings',
     loadComponent: () => import('./pages/payment-settings/payment-settings.page').then( m => m.PaymentSettingsPage)
   },
+  {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.page').then( m => m.AboutPage)
+  },
+  {
+    path: 'feedback',
+    loadComponent: () => import('./pages/feedback/feedback.page').then( m => m.FeedbackPage)
+  },
  
  
   

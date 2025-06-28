@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">About Us</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding about-content">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Welcome to FoodLab 🍽️</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      FoodLab is your go-to food delivery and restaurant discovery app.
+      Whether you're craving a late-night snack or a full-course meal, we’ve got you covered.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Features 🚀</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>Search and filter by cuisines </li>
+        <li>Save your favorite places</li>
+        <li>Place orders easily</li>
+        <li>Light & dark mode support</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Made with ❤️</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Built using the MEAN stack (MongoDB, Express, Angular, Node.js) and Ionic for a seamless mobile experience.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Contact Us 📬</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Have suggestions or feedback? Reach out at:
+      <br />
+      <strong>Email:</strong> {{email}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -49,10 +49,10 @@
 
     <ion-card class="about">
       <ion-row>
-        <ion-col size="12"><a href="">About</a></ion-col>
+        <ion-col size="12"><a [routerLink]="['/about']">About</a></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="12"><a href="">Send Feedback</a></ion-col>
+        <ion-col size="12"><a [routerLink]="['/feedback']">Send Feedback</a></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12"><a [routerLink]="['/settings']">Settings</a></ion-col>
@@ -70,7 +70,7 @@
           <ion-col size="12">Login/Register</ion-col>
         </ion-row>
       </ion-card>
-      <ion-card >
+      <ion-card [routerLink]="['/about']">
         <ion-col size="12">About</ion-col>
       </ion-card>
       <ion-card slot="bottom" [routerLink]="['/settings']">

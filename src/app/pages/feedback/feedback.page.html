@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary" class="profile-toolbar">
+    <button class="back-btn" (click)="goBack()">
+      <
+    </button>
+    <h1 class="toolbar-title">Send Feedback</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div class="feedback-container">
+  <h2>Send Feedback</h2>
+
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <label>Name</label>
+    <input type="text" formControlName="name" />
+
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+
+    <label>Message</label>
+    <textarea rows="5" formControlName="message"></textarea>
+
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+  </form>
+
+  <p *ngIf="submitted && feedbackForm.valid">Thank you for your feedback!</p>
+</div>
+
+</ion-content>
