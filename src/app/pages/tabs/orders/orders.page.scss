@@ -39,6 +39,15 @@ ion-header{
   margin: 0;
   font-size: 1.2rem;
   color: #333;
+  width: 100%;
+  cursor: pointer;
+}
+.header{
+  width: 80%;
+}
+
+.order-header span{
+  cursor: pointer;
 }
 
 .order-date {

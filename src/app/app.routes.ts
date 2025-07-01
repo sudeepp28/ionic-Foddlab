@@ -91,6 +91,14 @@ export const routes: Routes = [
     path: 'help',
     loadComponent: () => import('./pages/help/help.page').then( m => m.HelpPage)
   },
+  {
+    path: 'last-order-restaurant/:id',
+    loadComponent: () => import('./pages/last-order-restaurant/last-order-restaurant.page').then( m => m.LastOrderRestaurantPage)
+  },
+  {
+    path: 'order-details/:id',
+    loadComponent: () => import('./pages/order-details/order-details.page').then( m => m.OrderDetailsPage)
+  },
  
  
   

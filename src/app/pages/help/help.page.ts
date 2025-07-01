@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './help.page.html',
   styleUrls: ['./help.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonToolbar, CommonModule, FormsModule]
 })
 export class HelpPage implements OnInit {
 

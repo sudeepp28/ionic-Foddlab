@@ -9,12 +9,21 @@
   @if(orderItems.length > 0) {
     @for(order of orderItems; track order._id) {
       <div class="order-card">
-        <div class="order-header">
-          <h3>{{ order.items[0].restaurantName }}</h3>
-          <p class="order-date">{{ order.placedAt | date:'dd MMMM yyyy, h:mm a' }}</p>
+
+        @if(selectedOrderId===order._id){
+          <app-order-tab [orderId]="selectedOrderId" (close)="oncloseOrderTab()" ></app-order-tab>
+        }
+        <div class="order-header"  >
+         
+          <div [routerLink]="['/last-order-restaurant',order.items[0].restaurantId]" class="header">
+            <h3 >{{ order.items[0].restaurantName }}</h3>
+         
+          <p class="order-date">{{ order.placeAt | date:'dd MMMM yyyy, h:mm a' }}</p>
+          </div>
+            <span (click)="openOrderTab(order._id)"><i class="fa-solid fa-ellipsis-vertical"></i></span>
         </div>
 
-        <div class="order-items">
+        <div class="order-items" (click)="goToOrderDetails(order._id)">
           @for(item of order.items; track item) {
             <div class="order-item">
               <img [src]="item.imgUrl" alt="{{item.name}}" />
