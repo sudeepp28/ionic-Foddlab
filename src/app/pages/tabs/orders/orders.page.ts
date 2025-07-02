@@ -40,8 +40,10 @@ openOrderTab(id:any){
 }
 oncloseOrderTab(){
  this.selectedOrderId=null;
+ this.getOrders()
 }
 goToOrderDetails(id:any){
 this.router.navigate(['order-details',id])
 }
+
 }

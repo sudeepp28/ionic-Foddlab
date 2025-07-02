@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/api.services/cart.service';
 
 @Component({
@@ -20,7 +21,7 @@ selectedPrices:any
 price:number=0;
 totalQuantity:number=1
 
-constructor(private cartService:CartService){}
+constructor(private cartService:CartService, private router:Router){}
 ngOnInit(): void {
 
   this.selectedPrices=this.dish.prices[0]
@@ -49,12 +50,18 @@ const cartData={
       ...this.selectedPrices
 }
 
-this.cartService.addToCart(cartData)
-
-this.cartService.setShowCartButton(true)
-  this.close.emit()
-
-  alert(`${cartData.name} is added to FoodCart`)
+this.cartService.addToCart(cartData).subscribe({
+    next: () => {
+      this.cartService.setShowCartButton(true);
+      this.close.emit();
+      alert(`${cartData.name} is added to FoodCart`);
+    },
+    error: (err) => {
+      console.error("Add to cart failed:", err);
+      alert("Login required or session expired.");
+      this.router.navigate(['/login']);
+    }
+  });
 }
 
 }

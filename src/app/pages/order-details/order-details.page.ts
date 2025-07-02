@@ -21,7 +21,6 @@ bill:any
 
   ngOnInit() {
 this.orderId=this.route.snapshot.paramMap.get('id')
-console.log(this.orderId)
 this.getOrder(this.orderId)
   }
   getOrder(orderId:any){

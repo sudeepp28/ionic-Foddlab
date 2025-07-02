@@ -25,38 +25,36 @@ export class CartService{
       headers: this.getAuthHeaders(),
     })
     }
-     addToCart(newDish: any): void {
-  this.http.get<any[]>(this.url,{
+     addToCart(newDish: any): Observable<any> {
+  return new Observable(observer => {
+    this.http.get<any[]>(this.url, {
       headers: this.getAuthHeaders(),
-    }).subscribe(cartItems => {
-    if (cartItems.length > 0) {
-      const existingRestaurantId = cartItems[0].restaurantId;
-
-      if (existingRestaurantId !== newDish.restaurantId) {
-        // 🧹 Clear cart if from a different restaurant
-        this.clearCart().subscribe(() => {
-          this.http.post(this.url, newDish,{
-      headers: this.getAuthHeaders(),
-    }).subscribe(res => {
-            console.log('Dish added after clearing cart', res);
+    }).subscribe({
+      next: (cartItems) => {
+        const postDish = () => {
+          this.http.post(this.url, newDish, {
+            headers: this.getAuthHeaders(),
+          }).subscribe({
+            next: res => {
+              console.log('Dish added to cart', res);
+              observer.next(res);
+              observer.complete();
+            },
+            error: err => observer.error(err)
           });
-        });
-      } else {
-        // ➕ Always add the new dish (no merge)
-        this.http.post(this.url, newDish,{
-      headers: this.getAuthHeaders(),
-    }).subscribe(res => {
-          console.log('New dish added to cart (no merge)', res);
-        });
-      }
-    } else {
-      // 🛒 Cart is empty - just add
-      this.http.post(this.url, newDish,{
-      headers: this.getAuthHeaders(),
-    }).subscribe(res => {
-        console.log('Dish added to empty cart', res);
-      });
-    }
+        };
+
+        if (cartItems.length > 0 && cartItems[0].restaurantId !== newDish.restaurantId) {
+          this.clearCart().subscribe({
+            next: () => postDish(),
+            error: err => observer.error(err)
+          });
+        } else {
+          postDish();
+        }
+      },
+      error: err => observer.error(err)
+    });
   });
 }
 

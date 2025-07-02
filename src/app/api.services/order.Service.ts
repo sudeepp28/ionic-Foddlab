@@ -23,4 +23,8 @@ url="https://foodlabbackend-production.up.railway.app/order"
       headers: this.getAuthHeaders(),
     })
     }
+    deleteOrder(orderId:any):Observable<any>{
+      return this.http.delete(`${this.url}s/delete/${orderId}`)
+    }
+   
 }
